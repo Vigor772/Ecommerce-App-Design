@@ -1,4 +1,6 @@
+import 'package:ecommerce_ui/components/product_presentation.dart';
 import 'package:ecommerce_ui/components/productcategory.dart';
+import 'package:ecommerce_ui/components/shop_presentation.dart';
 import 'package:ecommerce_ui/widgets/bottomnavigation_widget.dart';
 import 'package:ecommerce_ui/widgets/button_widget.dart';
 import 'package:ecommerce_ui/widgets/text_widget.dart';
@@ -58,32 +60,31 @@ class _CatalogState extends State<Catalog> {
           )
         ],
       ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Container(
-              height: 60,
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  border: Border(
-                      bottom: BorderSide(color: Colors.grey, width: 0.5))),
-              width: MediaQuery.of(context).size.width * 1,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(children: [
-                  Container(
-                    height: 60,
-                    width: 40,
-                    decoration: BoxDecoration(
-                        border: Border.all(color: Colors.grey),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(10))),
-                    margin: const EdgeInsets.all(10),
-                    child: const Icon(
-                      Icons.tune_outlined,
-                    ),
-                  ),
-                  Row(
+      body: Column(
+        children: [
+          Container(
+            height: 60,
+            decoration: const BoxDecoration(
+                color: Colors.white,
+                border:
+                    Border(bottom: BorderSide(color: Colors.grey, width: 0.5))),
+            width: MediaQuery.of(context).size.width * 1,
+            child: Row(children: [
+              Container(
+                height: 60,
+                width: 40,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: const BorderRadius.all(Radius.circular(10))),
+                margin: const EdgeInsets.all(10),
+                child: const Icon(
+                  Icons.tune_outlined,
+                ),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
                     children: [
                       ProductCategory(
                           onTap: () {},
@@ -116,82 +117,97 @@ class _CatalogState extends State<Catalog> {
                           categoryName: "Women's"),
                     ],
                   ),
-                ]),
+                ),
               ),
-            ),
-            Container(
-              padding: EdgeInsets.all(10),
-              height: 320,
-              width: MediaQuery.of(context).size.width * 1,
+            ]),
+          ),
+          Expanded(
+            child: SingleChildScrollView(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    child: Row(
+                    //color: Colors.pinkAccent,
+                    padding: const EdgeInsets.all(10),
+                    height: 280,
+                    width: MediaQuery.of(context).size.width * 1,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const TextBold(
-                          text: 'Hot Sales',
-                          fontSize: 18,
+                        Row(
+                          children: [
+                            const TextBold(
+                              text: 'Hot Sales',
+                              fontSize: 18,
+                            ),
+                            const Expanded(child: SizedBox()),
+                            InkWell(
+                                onTap: () {},
+                                child: const TextNormal(text: 'See all'))
+                          ],
                         ),
-                        const Expanded(child: SizedBox()),
-                        InkWell(
-                            onTap: () {},
-                            child: const TextNormal(text: 'See all'))
+                        const SizedBox(height: 10),
+                        const ProductPresentation(),
                       ],
                     ),
                   ),
-                  const SizedBox(height: 10),
                   Container(
-                      decoration: const BoxDecoration(
-                          color: Colors.white,
-                          boxShadow: [
-                            BoxShadow(
-                                offset: Offset(0, 0),
-                                blurRadius: 3,
-                                spreadRadius: -1)
+                    //color: Colors.amber,
+                    padding: const EdgeInsets.all(10),
+                    height: 240,
+                    width: MediaQuery.of(context).size.width * 1,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            const TextBold(
+                              text: 'Visited Shops',
+                              fontSize: 18,
+                            ),
+                            const Expanded(child: SizedBox()),
+                            InkWell(
+                                onTap: () {},
+                                child: const TextNormal(text: 'See all'))
                           ],
-                          borderRadius: BorderRadius.all(Radius.circular(16))),
-                      height: 250,
-                      width: 220,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Stack(
-                            children: [
-                              Container(
-                                  height: 150,
-                                  child: ClipRRect(
-                                    borderRadius: const BorderRadius.only(
-                                        topLeft: Radius.circular(16),
-                                        topRight: Radius.circular(16)),
-                                    child: Image.asset(
-                                      'assets/gadgets.jpg',
-                                      fit: BoxFit.fill,
-                                    ),
-                                  )),
-                            ],
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: const [
-                              SizedBox(
-                                width: 220,
-                                child: TextNormal(
-                                  fontSize: 15,
-                                  text: 'Sample Product Name Here',
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                              ),
-                            ],
-                          )
-                        ],
-                      ))
+                        ),
+                        const SizedBox(height: 10),
+                        ShopPresentation(),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    //color: Colors.amber,
+                    padding: const EdgeInsets.all(10),
+                    height: 280,
+                    width: MediaQuery.of(context).size.width * 1,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            const TextBold(
+                              text: 'Recommended',
+                              fontSize: 18,
+                            ),
+                            const Expanded(child: SizedBox()),
+                            InkWell(
+                                onTap: () {},
+                                child: const TextNormal(text: 'See all'))
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        const ProductPresentation(),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       bottomNavigationBar: BottomNavigation(
         selectedItemColor: Colors.green,

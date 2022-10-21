@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+// Custom widget for selecting categories can be found on
 class ProductCategory extends StatelessWidget {
   final Image productImage;
   final String categoryName;

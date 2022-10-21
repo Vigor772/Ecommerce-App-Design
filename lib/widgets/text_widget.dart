@@ -38,6 +38,7 @@ class TextNormal extends StatelessWidget {
 }
 
 class TextBold extends StatelessWidget {
+  final TextOverflow overflow;
   final String text;
   final Color color;
   final double fontSize;
@@ -52,6 +53,7 @@ class TextBold extends StatelessWidget {
       this.fontSize = 12,
       this.textDecoration = TextDecoration.none,
       this.decorationColor = Colors.black,
+      this.overflow = TextOverflow.clip,
       this.fontStyle = FontStyle.normal})
       : super(key: key);
 
@@ -60,7 +62,7 @@ class TextBold extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-          overflow: TextOverflow.ellipsis,
+          overflow: overflow,
           fontStyle: fontStyle,
           decoration: textDecoration,
           decorationColor: decorationColor,
