@@ -1,12 +1,18 @@
+import 'package:ecommerce_ui/model/productmodel.dart';
 import 'package:ecommerce_ui/model/shopmodel.dart';
 import 'package:ecommerce_ui/pages/catalog.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => ShopModel())],
-      child: const MyApp()));
+  runApp(MultiProvider(providers: [
+    ChangeNotifierProvider(
+      create: (_) => ShopModel(),
+    ),
+    ChangeNotifierProvider(
+      create: (_) => ProductModel(),
+    )
+  ], child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
