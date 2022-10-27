@@ -5,6 +5,7 @@ import 'package:ecommerce_ui/pages/catalog.dart';
 import 'package:ecommerce_ui/widgets/button_widget.dart';
 import 'package:ecommerce_ui/widgets/text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 class ProductDetails extends StatefulWidget {
@@ -16,6 +17,7 @@ class ProductDetails extends StatefulWidget {
 
 class _ProductDetails extends State<ProductDetails> {
   bool expanded = false;
+  int defaultQuantity = 1;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,6 +112,7 @@ class _ProductDetails extends State<ProductDetails> {
                   ),
                 ],
               ),
+              const SizedBox(height: 25),
               ExpansionPanelList(
                 expansionCallback: (int index, bool isExpanded) {
                   setState(() {
@@ -140,6 +143,67 @@ class _ProductDetails extends State<ProductDetails> {
                               .toList())),
                 ],
               ),
+              const SizedBox(height: 50),
+              Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: TextBold(
+                    text:
+                        'Available Stocks: ${context.read<ProductModel>().quantity.toString()}',
+                    fontSize: 25,
+                  )),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Row(children: [
+                  Container(
+                    alignment: Alignment.center,
+                    child: Row(children: [
+                      IconButton(
+                          onPressed: () {
+                            setState(() {
+                              if (defaultQuantity == 1) {
+                                defaultQuantity = 1;
+                              } else {
+                                defaultQuantity--;
+                              }
+                            });
+                          },
+                          icon: const FaIcon(FontAwesomeIcons.squareMinus,
+                              color: Colors.greenAccent, size: 35)),
+                      const SizedBox(width: 5),
+                      TextNormal(
+                        text: '$defaultQuantity',
+                        fontSize: 25,
+                      ),
+                      const SizedBox(width: 5),
+                      IconButton(
+                          onPressed: () {
+                            setState(() {
+                              if (defaultQuantity ==
+                                  context.read<ProductModel>().quantity) {
+                                defaultQuantity = context
+                                    .read<ProductModel>()
+                                    .quantity
+                                    .toInt();
+                              } else {
+                                defaultQuantity++;
+                              }
+                            });
+                          },
+                          icon: const FaIcon(FontAwesomeIcons.squarePlus,
+                              color: Colors.greenAccent, size: 35))
+                    ]),
+                  ),
+                  const Expanded(child: SizedBox()),
+                  ItemButton(
+                    width: 130,
+                    borderColor: Colors.white,
+                    fontSize: 18,
+                    buttonColor: Colors.greenAccent,
+                    onPressed: () {},
+                    title: 'Add to Cart',
+                  )
+                ]),
+              )
             ],
           ),
         ));

@@ -2,20 +2,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 
 class ShopModel extends ChangeNotifier {
-  late String shopname;
+  late String shopName;
+  late String shopRating;
+  late String shopLogo;
+  late String shopCover;
 
-  Map<String, dynamic> toMap() {
-    return {
-      'shopname': shopname,
-    };
-  }
-
-  String toJson() {
-    return jsonEncode(toMap());
-  }
-
-  shopInfo(shop) {
-    shopname = shop;
+  shopInfo(name, rating, logo, cover) {
+    shopName = name;
+    shopRating = rating;
+    shopLogo = logo;
+    shopCover = cover;
     notifyListeners();
   }
 }

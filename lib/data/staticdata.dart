@@ -18,7 +18,7 @@ var staticProducts = [
     'Product Image': 'sample_shirt.png',
     'Shop Logo': 'sample_shop1.png',
     'Shop Name': 'Lebras Co.',
-    'Available Stock': 100,
+    'Available Stock': 10,
     'tags': 'Free Shipping',
     'variation': true
   },
@@ -74,36 +74,43 @@ var staticShops = [
     'Shop Name': 'CDO Co.',
     'Rating': '5.0',
     'Shop Logo': 'sample_shop1.png',
+    'Product Cover': 'sample_cover.jpg'
   },
   {
     'Shop Name': 'Lebras Co.',
     'Rating': '4.0',
     'Shop Logo': 'sample_shop2.png',
+    'Product Cover': 'sample_cover.jpg'
   },
   {
     'Shop Name': 'Coco Caca',
     'Rating': '3.6',
     'Shop Logo': 'sample_company.png',
+    'Product Cover': 'sample_cover.jpg'
   },
   {
     'Shop Name': 'Awoo Inc.',
     'Rating': '4.0',
     'Shop Logo': 'sample_shop3.png',
+    'Product Cover': 'sample_cover.jpg'
   },
   {
     'Shop Name': 'Touch Foul',
     'Rating': '5.0',
     'Shop Logo': 'sample_shop4.png',
+    'Product Cover': 'sample_cover.jpg'
   },
   {
     'Shop Name': "JJ's Store",
     'Rating': '5.0',
     'Shop Logo': 'sample_shop5.png',
+    'Product Cover': 'sample_cover.jpg'
   },
   {
     'Shop Name': 'Lebras Co.',
     'Rating': '5.0',
     'Shop Logo': 'sample_shop6.png',
+    'Product Cover': 'sample_cover.jpg'
   }
 ];
 
